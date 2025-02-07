@@ -1,0 +1,23 @@
+# Example mkdocs.yml for python files in /workflow/scripts (snakemake workflwo structure style)
+site_name: Example Docu
+
+theme:
+  name: "readthedocs"
+docs_dir: "./docs"
+
+# Due to snakemake workflow, we need to include the 'scripts' directory in the python path
+plugins:
+- search
+- gen-files:
+    scripts:
+    - docs/autogen_ref_pages.py
+- mkdocstrings:
+    default_handler: python
+    handlers:
+      python:
+        paths: ["./workflow/scripts"]
+
+nav:
+  - Home: index.md
+  - Tutorials: tutorials.md
+  - Reference: 
